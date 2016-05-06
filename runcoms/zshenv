@@ -5,6 +5,19 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+### Android SDK
+export ANDROID_HOME="/home/diego/Android/Sdk"
+export PATH="$ANDROID_HOME/tools:$PATH"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Loads pyenv
+export PATH="/home/diego/.pyenv/bin:$PATH"
+
+# Virtualenv wrapper
+export WORKON_HOME=$HOME/.virtualenvs
+
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
