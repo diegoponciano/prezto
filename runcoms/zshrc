@@ -25,3 +25,5 @@ fi
 if type "$pyenv" &> /dev/null; then
   pyenv virtualenvwrapper_lazy
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
