@@ -25,3 +25,5 @@ fi
 if type "$pyenv" &> /dev/null; then
   pyenv virtualenvwrapper_lazy
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
