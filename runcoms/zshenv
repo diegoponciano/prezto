@@ -6,17 +6,22 @@
 #
 
 ### Android SDK
-export ANDROID_HOME=~/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
 export PATH="$ANDROID_HOME/tools:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH=/usr/local/heroku/bin:$PATH
 
 ### Loads pyenv
-export PATH=~/.pyenv/bin:$PATH
+export PATH=$HOME/.pyenv/bin:$PATH
 
 # Virtualenv wrapper
 export WORKON_HOME=$HOME/.virtualenvs
+
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+
+# Fix vim  colors
+export TERM=screen-256color
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
