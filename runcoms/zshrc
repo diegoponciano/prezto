@@ -13,7 +13,9 @@ fi
 # Customize to your needs...
 if type "pyenv" &> /dev/null; then
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)";
 fi
 
 if [ -f "/usr/bin/virtualenvwrapper.sh" ]; then
