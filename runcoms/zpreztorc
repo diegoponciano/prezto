@@ -38,11 +38,12 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'history-substring-search' \
   'ruby' \
   'tmux' \
   'git' \
   'history-substring-search' \
+  'python' \
+
   'prompt'
 
 #
