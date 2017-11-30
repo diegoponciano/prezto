@@ -27,3 +27,6 @@ export TERM=screen-256color
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+export PGHOST=localhost
+export PGUSER=postgres
