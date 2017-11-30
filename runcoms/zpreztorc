@@ -36,6 +36,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'ruby' \
+  'python' \
   'tmux' \
   'git' \
   'history-substring-search' \
