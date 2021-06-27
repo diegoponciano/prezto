@@ -24,3 +24,6 @@ fi
 export PGHOST=localhost
 export PGUSER=postgres
 export PGPASS=postgres
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
