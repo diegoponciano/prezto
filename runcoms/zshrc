@@ -17,6 +17,18 @@ elif [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
 
+if ! type "$keychain" > /dev/null; then
+    keychain -q --nogui $HOME/.ssh/id_rsa
+    source $HOME/.keychain/$HOST-sh
+fi
+
+alias kprod='kubectl --context=arn:aws:eks:us-east-1:845156828388:cluster/ls-main-cluster-production'
+alias ksb='kubectl --context=arn:aws:eks:us-east-1:845156828388:cluster/ls-main-cluster-sandbox'
+alias kst='kubectl --context=arn:aws:eks:us-east-1:571579881413:cluster/ls-main-cluster-staging'
+alias kqa='kubectl --context=arn:aws:eks:us-east-1:571579881413:cluster/ls-main-cluster-qa'
+
+alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
