@@ -5,20 +5,13 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-### Android SDK
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH="$ANDROID_HOME/tools:$PATH"
-
 ### Added by the Heroku Toolbelt
 export PATH=/usr/local/heroku/bin:$PATH
 
-### Loads pyenv
-export PATH=$HOME/.pyenv/bin:$PATH
 
 # Virtualenv wrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
-
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
 # Fix vim  colors
 export TERM=screen-256color
@@ -30,3 +23,4 @@ fi
 
 export PGHOST=localhost
 export PGUSER=postgres
+export PGPASS=postgres
