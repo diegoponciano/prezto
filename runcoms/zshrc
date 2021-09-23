@@ -17,7 +17,7 @@ elif [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-if ! type "$keychain" > /dev/null; then
+if keychain 2> /dev/null; then
     keychain -q --nogui $HOME/.ssh/id_rsa
     source $HOME/.keychain/$HOST-sh
 fi
@@ -39,3 +39,5 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then
   autoload -Uz compinit
   compinit
 fi
+
+export PATH="$HOME/.deta/bin:$PATH"
