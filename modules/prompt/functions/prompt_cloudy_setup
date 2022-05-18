@@ -37,6 +37,28 @@
 # Load dependencies.
 pmodload 'helper'
 
+# Define variables.
+_prompt_cloudy_start_time=$SECONDS
+
+prompt_cloudy_print_elapsed_time() {
+  local end_time=$(( SECONDS - _prompt_cloudy_start_time ))
+  local hours minutes seconds remainder
+
+  if (( end_time >= 3600 )); then
+    hours=$(( end_time / 3600 ))
+    remainder=$(( end_time % 3600 ))
+    minutes=$(( remainder / 60 ))
+    seconds=$(( remainder % 60 ))
+    print -P "%B%F{red}>>> elapsed time ${hours}h${minutes}m${seconds}s%b"
+  elif (( end_time >= 60 )); then
+    minutes=$(( end_time / 60 ))
+    seconds=$(( end_time % 60 ))
+    print -P "%B%F{yellow}>>> elapsed time ${minutes}m${seconds}s%b"
+  elif (( end_time > 10 )); then
+    print -P "%B%F{green}>>> elapsed time ${end_time}s%b"
+  fi
+}
+
 function prompt_cloudy_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
@@ -45,6 +67,9 @@ function prompt_cloudy_precmd {
   if (( $+functions[git-info] )); then
       git-info
   fi
+
+  # Calculate and print the elapsed time.
+  prompt_cloudy_print_elapsed_time
 }
 
 function prompt_cloudy_help {
