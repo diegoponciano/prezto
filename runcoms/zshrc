@@ -42,4 +42,8 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then
   compinit
 fi
 
+autoload -Uz promptinit
+promptinit
+prompt cloudy
+
 export PATH="$HOME/.deta/bin:$PATH"
