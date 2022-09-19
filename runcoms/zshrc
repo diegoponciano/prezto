@@ -15,7 +15,10 @@ if [ -f "/usr/bin/virtualenvwrapper.sh" ]; then
   source /usr/bin/virtualenvwrapper.sh
 elif [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
   source /usr/local/bin/virtualenvwrapper.sh
+elif [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
+  source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
+
 
 if keychain 2> /dev/null; then
     keychain -q --nogui $HOME/.ssh/id_rsa
