@@ -31,7 +31,9 @@ if [[ -s "$HOME/.dokku/contrib/dokku_client.sh" ]]; then
   alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 fi
 
-[ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf
+if [ -f ~/.tmux.conf ] && [ -n "$TMUX" ]; then
+  tmux source-file ~/.tmux.conf
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
