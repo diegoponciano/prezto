@@ -8,6 +8,9 @@
 ### Added by the Heroku Toolbelt
 export PATH=/usr/local/heroku/bin:$PATH
 
+### Local python executables
+export PATH="${HOME}/.local/bin:${PATH}"
+
 
 # Virtualenv wrapper
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -22,9 +25,9 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # Local PostgreSQL
-export PGHOST=localhost
-export PGUSER=postgres
-export PGPASS=postgres
+# export PGHOST=localhost
+# export PGUSER=postgres
+# export PGPASS=postgres
 
 # Display for x410
 if [[ $(grep Microsoft /proc/version) ]]; then
