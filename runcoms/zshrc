@@ -38,7 +38,7 @@ alias kst='kubectl --context=arn:aws:eks:us-east-1:571579881413:cluster/ls-main-
 alias kqa='kubectl --context=arn:aws:eks:us-east-1:571579881413:cluster/ls-main-cluster-qa'
 
 if [[ -s "$HOME/.dokku/contrib/dokku_client.sh" ]]; then
-  alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+  alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
 fi
 
 if [ -f ~/.tmux.conf ] && [ -n "$TMUX" ]; then
