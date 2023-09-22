@@ -32,10 +32,16 @@ if keychain 2> /dev/null; then
     source $HOME/.keychain/$HOST-sh
 fi
 
-alias kprod='kubectl --context=arn:aws:eks:us-east-1:845156828388:cluster/ls-main-cluster-production'
-alias ksb='kubectl --context=arn:aws:eks:us-east-1:845156828388:cluster/ls-main-cluster-sandbox'
-alias kst='kubectl --context=arn:aws:eks:us-east-1:571579881413:cluster/ls-main-cluster-staging'
-alias kqa='kubectl --context=arn:aws:eks:us-east-1:571579881413:cluster/ls-main-cluster-qa'
+# TSH stuff
+alias kqa='tsh login --proxy=teleport.qa.loadsmart.io teleport.qa.loadsmart.io >/dev/null && tsh kube login ls-main-cluster-qa && kubectl'
+alias ksb='tsh login --proxy=teleport.loadsmart.io teleport.loadsmart.io >/dev/null && tsh kube login ls-main-cluster-sandbox && kubectl'
+alias kst='tsh login --proxy=teleport.loadsmart.io teleport.loadsmart.io >/dev/null && tsh kube login ls-main-cluster-staging && kubectl'
+alias kprod='tsh login --proxy=teleport.loadsmart.io teleport.loadsmart.io >/dev/null && tsh kube login ls-main-cluster-production && kubectl'
+
+export PATH="$HOME/.lumper/bin:$PATH"
+
+# deta stuff
+export PATH="$HOME/.deta/bin:$PATH"
 
 if [[ -s "$HOME/.dokku/contrib/dokku_client.sh" ]]; then
   alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
@@ -59,8 +65,6 @@ fi
 autoload -Uz promptinit
 promptinit
 prompt cloudy
-
-export PATH="$HOME/.deta/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
