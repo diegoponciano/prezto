@@ -44,7 +44,7 @@ export PATH="$HOME/.lumper/bin:$PATH"
 export PATH="$HOME/.deta/bin:$PATH"
 
 if [[ -s "$HOME/.dokku/contrib/dokku_client.sh" ]]; then
-  alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+  alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
 fi
 
 if [ -f ~/.tmux.conf ] && [ -n "$TMUX" ]; then
