@@ -36,7 +36,14 @@ if keychain 2> /dev/null; then
 fi
 
 # deta stuff
-export PATH="$HOME/.deta/bin:$PATH"
+if [ -d "$HOME/.deta/bin" ]; then
+  export PATH="$HOME/.deta/bin:$PATH"
+fi
+
+# terraform and tfenv stuff
+if [ -d "$HOME/.tfenv/bin" ]; then
+  export PATH="$HOME/.tfenv/bin:$PATH"
+fi
 
 if [[ -s "$HOME/.dokku/contrib/dokku_client.sh" ]]; then
   alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
