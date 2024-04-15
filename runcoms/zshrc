@@ -28,17 +28,12 @@ fi
 
 
 if keychain 2> /dev/null; then
-    keychain -q --nogui $HOME/.ssh/id_rsa
-    source $HOME/.keychain/$HOST-sh
+  keychain -q --nogui $HOME/.ssh/id_rsa
+  if [ -f "$HOME/.ssh/id_zartis" ]; then
+    keychain -q --nogui $HOME/.ssh/id_zartis
+  fi
+  source $HOME/.keychain/$HOST-sh
 fi
-
-# TSH stuff
-alias kqa='tsh login --proxy=teleport.qa.loadsmart.io teleport.qa.loadsmart.io >/dev/null && tsh kube login ls-main-cluster-qa && kubectl'
-alias ksb='tsh login --proxy=teleport.loadsmart.io teleport.loadsmart.io >/dev/null && tsh kube login ls-main-cluster-sandbox && kubectl'
-alias kst='tsh login --proxy=teleport.loadsmart.io teleport.loadsmart.io >/dev/null && tsh kube login ls-main-cluster-staging && kubectl'
-alias kprod='tsh login --proxy=teleport.loadsmart.io teleport.loadsmart.io >/dev/null && tsh kube login ls-main-cluster-production && kubectl'
-
-export PATH="$HOME/.lumper/bin:$PATH"
 
 # deta stuff
 export PATH="$HOME/.deta/bin:$PATH"
@@ -69,3 +64,5 @@ prompt cloudy
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
