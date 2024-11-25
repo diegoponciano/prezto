@@ -59,10 +59,16 @@ if [ -d "~/.zsh/completion" ]; then
   fpath=(~/.zsh/completion $fpath)
 fi
 
+# ASDF package manager
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . $HOME/.asdf/asdf.sh
   # append asdf completions to fpath
   fpath=(${ASDF_DIR}/completions $fpath)
+fi
+
+# mise package manager
+if [ -f "$HOME/.local/bin/mise" ]; then
+  eval "$($HOME/.local/bin/mise activate zsh)"
 fi
 
 ## initialise completions with ZSH's compinit
