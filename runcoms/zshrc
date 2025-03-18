@@ -78,3 +78,8 @@ prompt cloudy
 (( ! ${+functions[p10k]} )) || p10k finalize
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Added by LM Studio CLI (lms)
+if [ -d "$HOME/.lmstudio/bin" ]; then
+  export PATH="$PATH:$HOME/.lmstudio/bin"
+fi
