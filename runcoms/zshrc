@@ -89,3 +89,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if [ -d "$HOME/.lmstudio/bin" ]; then
   export PATH="$PATH:$HOME/.lmstudio/bin"
 fi
+
+# Added by Windsurf
+if [ -d "$HOME/.codeium/windsurf/bin" ]; then
+  export PATH="$PATH:$HOME/.codeium/windsurf/bin"
+fi
