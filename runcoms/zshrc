@@ -17,7 +17,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Configures ZSH history
+unsetopt SHARE_HISTORY          # Disables: Share history between all sessions.
+setopt APPEND_HISTORY           # Appends history to $HISTFILE rather than replacing it
+setopt INC_APPEND_HISTORY       # Appends new history lines to the $HISTFILE incrementally
+
+# Source virtualenvwrapper if installed
 if [ -f "/usr/bin/virtualenvwrapper.sh" ]; then
   source /usr/bin/virtualenvwrapper.sh
 elif [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
@@ -26,7 +31,7 @@ elif [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
   source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
-
+# load ssh keys with keychain
 if keychain 2> /dev/null; then
   keychain -q --nogui $HOME/.ssh/id_rsa
   if [ -f "$HOME/.ssh/id_zartis" ]; then
@@ -45,14 +50,17 @@ if [ -d "$HOME/.tfenv/bin" ]; then
   export PATH="$HOME/.tfenv/bin:$PATH"
 fi
 
+# dokku
 if [[ -s "$HOME/.dokku/contrib/dokku_client.sh" ]]; then
   alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
 fi
 
+# TMUX
 if [ -f ~/.tmux.conf ] && [ -n "$TMUX" ]; then
   tmux source-file ~/.tmux.conf
 fi
 
+# Fuzzy search
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -d "~/.zsh/completion" ]; then

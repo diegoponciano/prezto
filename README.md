@@ -73,6 +73,23 @@ version is **4.3.11**.
 
 05. Open a new Zsh terminal window or tab.
 
+06. Set original repo as upstream on git remotes:
+
+    ```console
+    git remote add upstream git@github.com:sorin-ionescu/prezto.git
+    ```
+
+07. Pull new changes from original repo:
+
+    ```console
+    git pull upstream master
+    git push
+    ```
+
+08. Check differences between this repo and upstream:
+
+    **Diff URL:** https://github.com/sorin-ionescu/prezto/compare/master...diegoponciano:prezto:master?diff=unified&w=
+
 ### Troubleshooting
 
 If you are not able to find certain commands after switching to Prezto, modify
