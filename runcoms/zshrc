@@ -31,14 +31,6 @@ elif [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
   source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
-# load ssh keys with keychain
-if keychain 2> /dev/null; then
-  keychain -q --nogui $HOME/.ssh/id_rsa
-  if [ -f "$HOME/.ssh/id_zartis" ]; then
-    keychain -q --nogui $HOME/.ssh/id_zartis
-  fi
-  source $HOME/.keychain/$HOST-sh
-fi
 
 # deta stuff
 if [ -d "$HOME/.deta/bin" ]; then
@@ -104,40 +96,9 @@ if [ -d "$HOME/.codeium/windsurf/bin" ]; then
 fi
 
 
-_claude_with_profile() {
-  export CLAUDE_CONFIG_DIR="$1"
-  command claude "${@:2}"
-}
-
-# Work Pearlhealth profile (default)
-claude() {
-  _claude_with_profile "$HOME/.claude" "$@"
-}
-
-# Work Zartis profile (default)
-zclaude() {
-  _claude_with_profile "$HOME/.claude-zartis" "$@"
-}
-
-# personal profile
-ogclaude() {
-  _claude_with_profile "$HOME/.claude-original" "$@"
-}
-
-# personal profile with Z.ai
-pclaude() {
-  _claude_with_profile "$HOME/.claude-personal" "$@"
-}
-
 # BEGIN MISE ACTIVATE
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 # END MISE ACTIVATE
-# BEGIN GITHUB TOKEN
-export GITHUB_API_TOKEN="$(gh auth token)"
-export GITHUB_TOKEN="${GITHUB_API_TOKEN}"
-# GitHub Personal Access Token for Claude Code MCP
-export GITHUB_PERSONAL_ACCESS_TOKEN="${GITHUB_API_TOKEN}"
-# END GITHUB TOKEN
 
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
@@ -150,6 +111,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# Added by Antigravity
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+# Private config (managed by chezmoi, not tracked in this repo)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
