@@ -42,6 +42,11 @@ if [ -d "$HOME/.tfenv/bin" ]; then
   export PATH="$HOME/.tfenv/bin:$PATH"
 fi
 
+# snap
+if [ -d "/snap/bin" ]; then
+  export PATH="$PATH:/snap/bin"
+fi
+
 # dokku
 if [[ -s "$HOME/.dokku/contrib/dokku_client.sh" ]]; then
   alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
