@@ -36,6 +36,17 @@ if [[ -z "$LANG" ]]; then
 fi
 
 #
+# Homebrew
+#
+
+# Must run before the Paths section below: brew's own shellenv skips its
+# output (including HOMEBREW_PREFIX/MANPATH/INFOPATH) if it detects PATH
+# already has homebrew's bin/sbin in front, which the path array below sets.
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+fi
+
+#
 # Paths
 #
 
